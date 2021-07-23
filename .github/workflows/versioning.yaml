@@ -5,9 +5,11 @@ jobs:
   branch_version:
     runs-on: ubuntu-latest    
     steps:
-    - uses: actions/checkout@v2.3.4
-      name: checkout
-      fetch-depth: 0
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}   # checkout the correct branch name
+        fetch-depth: 0 
 
     - name: Calculate next version
       id: nextversion
