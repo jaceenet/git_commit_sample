@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest    
     steps:
     - uses: actions/checkout@v1
+      fetch-depth: 0
     - name: Calculate next version
       id: nextversion
       uses: cezarypiatek/NextVersionGeneratorAction@0.4
