@@ -3,7 +3,16 @@ name: Git Version
 on: [push]
 
 jobs:
-  lint:
+  branch_version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Generate Version
+      id: versioning
+      uses: sceccotti89/Github-Action-Versioning@v1.0.5
+    - name: Get the output version
+      run: echo "Version = ${{ steps.versioning.outputs.version }}"
+
+  gitversion:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -14,5 +23,8 @@ jobs:
 
       - name: Git Version
         uses: codacy/git-version@2.2.0
+        id: gitversion
         with:
           prefix: v
+      - name: debug
+        run: echo ${{ steps.get-version.outputs.version }}
