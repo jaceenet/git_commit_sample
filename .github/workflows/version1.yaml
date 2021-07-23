@@ -9,9 +9,6 @@ jobs:
     - name: Normalize branch name
       uses: Slidem/branch-name-normalizer@v1.0.0
 
-    - name: Semantic Version (SemVer) Aliases
-      uses: pr-mpt/actions-semver-aliases@v1.1.0
-
     - name: Generate Version
       id: versioning
       uses: sceccotti89/Github-Action-Versioning@v1.0.5
