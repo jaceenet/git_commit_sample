@@ -1,0 +1,18 @@
+name: Git Version
+on: [push]
+
+jobs:
+  branch_version:
+    runs-on: ubuntu-latest    
+    steps:
+    - name: Calculate next version
+      id: nextversion
+      uses: cezarypiatek/NextVersionGeneratorAction@0.4
+      with:
+        major-pattern: 'BREAKING CHANGES:'
+        minor-pattern: 'FEATURE:'
+        patch-pattern: '.*'
+        version-tag-prefix: v
+        output-to-env-variable: 'VersionPrefix'
+    - name: see
+      run: echo "${{ steps.nextversion.outputs.nextVersion }}"
