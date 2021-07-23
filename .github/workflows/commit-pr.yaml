@@ -13,6 +13,7 @@ jobs:
     steps:
       # X.X.X - Latest version available at:
       #         https://github.com/kunalnagarco/action-semantic-pr/releases
-      - uses: kunalnagarco/action-semantic-pr@vX.X.X
+      - name: semantic-pull-request
+        uses: uses: amannn/action-semantic-pull-request@v3.4.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
