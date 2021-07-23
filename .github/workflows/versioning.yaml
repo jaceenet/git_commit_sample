@@ -5,20 +5,14 @@ jobs:
   branch_version:
     runs-on: ubuntu-latest    
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}   # checkout the correct branch name
-        fetch-depth: 0 
+    - uses: actions/checkout@v2
 
-    - name: Calculate next version
-      id: nextversion
-      uses: cezarypiatek/NextVersionGeneratorAction@0.4
-      with:
-        major-pattern: 'BREAKING CHANGES:'
-        minor-pattern: 'FEATURE:'
-        patch-pattern: '.*'
-        version-tag-prefix: v
-        output-to-env-variable: 'VersionPrefix'
-    - name: see
-      run: echo "${{ steps.nextversion.outputs.nextVersion }}"
+    - name: Configure committer
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+    
+    - name: Bump version
+      uses: qzb/standard-version@v1
+        - name: see
+          run: echo "${{ steps.nextversion.outputs.nextVersion }}"
