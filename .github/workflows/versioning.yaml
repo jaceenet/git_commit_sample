@@ -5,14 +5,14 @@ jobs:
   branch_version:
     runs-on: ubuntu-latest    
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Configure committer
-      run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "<>"
-    
-    - name: Bump version
-      uses: qzb/standard-version@v1
-        - name: see
-          run: echo "${{ steps.nextversion.outputs.nextVersion }}"
+      - name: Configure committer
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      
+      - name: Bump version
+        uses: qzb/standard-version@v1
+      - name: see
+        run: echo "${{ steps.nextversion.outputs.nextVersion }}"
